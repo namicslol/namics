@@ -42,17 +42,17 @@ vercel
 4. Vercel will auto-detect the project
 5. Click "Deploy"
 
-### 3. Set up Vercel KV (for view counter)
+### 3. Set up Upstash Redis (for view counter)
 
 1. Go to your Vercel project dashboard
 2. Click on the "Storage" tab
-3. Click "Create Database"
-4. Select "KV" (Key-Value Storage)
-5. Choose a name (e.g., "namics-views")
-6. Click "Create"
-7. Vercel will automatically link the KV store to your project
+3. Under "Marketplace Database Providers", find **Upstash**
+4. Click "Create" next to Upstash
+5. Choose "Redis" from the options
+6. Follow the setup prompts (free tier available)
+7. Vercel will automatically connect and inject the environment variables
 
-**Important:** The KV store is automatically connected via environment variables. No additional configuration needed!
+**Important:** Upstash environment variables are automatically injected by Vercel. No additional configuration needed!
 
 ### 4. Verify Deployment
 
