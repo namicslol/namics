@@ -1,0 +1,13 @@
+{
+  "name": "namics-biolink",
+  "version": "1.0.0",
+  "description": "Personal biolink page with view counter",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "dependencies": {
+    "@vercel/kv": "^1.0.1"
+  }
+}
