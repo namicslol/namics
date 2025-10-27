@@ -267,8 +267,24 @@
     </audio>
 
     <script>
+        // Fetch and increment view count
+        async function updateViews() {
+            try {
+                const response = await fetch('/api/views');
+                const data = await response.json();
+                document.getElementById('viewCount').textContent = data.views || 0;
+            } catch (error) {
+                console.error('Error fetching views:', error);
+                document.getElementById('viewCount').textContent = '0';
+            }
+        }
+
         // Handle audio autoplay with browser restrictions
         window.addEventListener('load', function() {
+            // Update view count
+            updateViews();
+
+            // Audio handling
             const audio = document.getElementById('bgMusic');
             audio.volume = 0.5; // Set to 50% volume
 
