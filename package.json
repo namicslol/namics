@@ -4,8 +4,7 @@
   "description": "Personal biolink page with view counter",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "vercel build"
+    "dev": "vercel dev"
   },
   "dependencies": {
     "@vercel/kv": "^1.0.1"
