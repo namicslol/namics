@@ -64,7 +64,9 @@ vercel
 ## Troubleshooting
 
 ### Views not incrementing?
-- Check that Vercel KV is created and linked to your project
+- Check that Upstash Redis is created and linked to your project
+- Go to Vercel dashboard → Settings → Environment Variables
+- Verify `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are present
 - Check the Vercel logs in the dashboard
 - Verify the API endpoint is accessible at: `https://your-domain.vercel.app/api/views`
 
