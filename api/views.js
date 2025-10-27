@@ -1,12 +1,12 @@
 // Vercel Serverless Function for View Counter
-// This uses Vercel KV for persistent storage
+// Uses Upstash Redis for persistent storage
 
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
@@ -14,19 +14,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Get current view count
-    let views = await kv.get('page_views');
+    // Initialize Redis client with environment variables (auto-injected by Vercel)
+    const redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    });
 
-    // Initialize if doesn't exist
-    if (views === null) {
-      views = 0;
-    }
-
-    // Increment view count
-    views = parseInt(views) + 1;
-
-    // Save new count
-    await kv.set('page_views', views);
+    // Increment and get the view count in one atomic operation
+    const views = await redis.incr('page_views');
 
     // Return the count
     return res.status(200).json({ views: views });
