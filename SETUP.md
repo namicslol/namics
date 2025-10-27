@@ -91,15 +91,19 @@ vercel dev
 This will:
 - Run the serverless functions locally
 - Serve the index.html
-- Connect to your Vercel KV (if configured)
+- Connect to your Upstash Redis (if configured)
 
 Open http://localhost:3000 to test!
 
 ## Free Tier Limits
 
-Vercel Free Tier includes:
+**Vercel Free Tier:**
 - Unlimited deployments
 - 100GB bandwidth/month
-- Vercel KV: 256MB storage, 10K requests/day
+
+**Upstash Redis Free Tier:**
+- 10,000 commands/day
+- 256MB storage
+- Global replication
 
 This is more than enough for a personal biolink page!
